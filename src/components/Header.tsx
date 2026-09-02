@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActiveTab } from '../types';
-import { LayoutDashboard, Scale, ShieldCheck, Users, Edit3, Eye, DownloadCloud, CloudUpload } from 'lucide-react';
+import { LayoutDashboard, Scale, ShieldCheck, Users, Edit3, Eye, DownloadCloud, CloudUpload, MessageSquare } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -29,6 +29,12 @@ export const Header: React.FC<HeaderProps> = ({
       label: 'Resumen Ejecutivo',
       icon: LayoutDashboard,
       badge: null
+    },
+    {
+      id: 'interview' as ActiveTab,
+      label: 'Copiloto de Entrevistas UX',
+      icon: MessageSquare,
+      badge: '8 sesiones'
     },
     {
       id: 'laws' as ActiveTab,

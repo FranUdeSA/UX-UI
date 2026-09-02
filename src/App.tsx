@@ -11,6 +11,7 @@ import { ExportDataModal } from './components/ExportDataModal';
 import { PublishModal } from './components/PublishModal';
 import { TeamFooter } from './components/TeamFooter';
 import { teamData } from './data/teamData';
+import { InterviewModule } from './components/interview/InterviewModule';
 import { Users, GraduationCap, Sparkles } from 'lucide-react';
 
 const STORAGE_LAWS_KEY = 'osde_ux_laws_v1';
@@ -132,6 +133,10 @@ export const App: React.FC = () => {
             heuristics={heuristics}
             setActiveTab={setActiveTab}
           />
+        )}
+
+        {activeTab === 'interview' && (
+          <InterviewModule />
         )}
 
         {activeTab === 'laws' && (
