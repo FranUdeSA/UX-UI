@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActiveTab } from '../types';
-import { LayoutDashboard, Scale, ShieldCheck, Users, Edit3, Eye, DownloadCloud } from 'lucide-react';
+import { LayoutDashboard, Scale, ShieldCheck, Edit3, Eye, DownloadCloud, MessageSquare } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -29,6 +29,12 @@ export const Header: React.FC<HeaderProps> = ({
       badge: null
     },
     {
+      id: 'interview' as ActiveTab,
+      label: 'Copiloto de Entrevistas UX',
+      icon: MessageSquare,
+      badge: '8 sesiones'
+    },
+    {
       id: 'laws' as ActiveTab,
       label: 'Tablero 1: Leyes UX',
       icon: Scale,
@@ -39,12 +45,6 @@ export const Header: React.FC<HeaderProps> = ({
       label: 'Tablero 2: Heurísticas Nielsen',
       icon: ShieldCheck,
       badge: `${nielsenCount.evaluated}/${nielsenCount.total}`
-    },
-    {
-      id: 'team' as ActiveTab,
-      label: 'Equipo & Contexto',
-      icon: Users,
-      badge: '4 integrantes'
     }
   ];
 

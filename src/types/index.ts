@@ -39,7 +39,7 @@ export interface TeamData {
   };
 }
 
-export type ActiveTab = 'dashboard' | 'laws' | 'nielsen' | 'team';
+export type ActiveTab = 'dashboard' | 'interview' | 'laws' | 'nielsen';
 
 export interface EvidenceModalData {
   isOpen: boolean;
