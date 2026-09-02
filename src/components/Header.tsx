@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActiveTab } from '../types';
-import { LayoutDashboard, Scale, ShieldCheck, Edit3, Eye, DownloadCloud, MessageSquare } from 'lucide-react';
+import { LayoutDashboard, Scale, ShieldCheck, Users, Edit3, Eye, DownloadCloud, CloudUpload } from 'lucide-react';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -10,6 +10,7 @@ interface HeaderProps {
   isEditMode: boolean;
   setIsEditMode: (val: boolean) => void;
   onOpenExport: () => void;
+  onOpenPublish: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -19,7 +20,8 @@ export const Header: React.FC<HeaderProps> = ({
   nielsenCount,
   isEditMode,
   setIsEditMode,
-  onOpenExport
+  onOpenExport,
+  onOpenPublish,
 }) => {
   const tabs = [
     {
@@ -27,12 +29,6 @@ export const Header: React.FC<HeaderProps> = ({
       label: 'Resumen Ejecutivo',
       icon: LayoutDashboard,
       badge: null
-    },
-    {
-      id: 'interview' as ActiveTab,
-      label: 'Copiloto de Entrevistas UX',
-      icon: MessageSquare,
-      badge: '8 sesiones'
     },
     {
       id: 'laws' as ActiveTab,
@@ -45,6 +41,12 @@ export const Header: React.FC<HeaderProps> = ({
       label: 'Tablero 2: Heurísticas Nielsen',
       icon: ShieldCheck,
       badge: `${nielsenCount.evaluated}/${nielsenCount.total}`
+    },
+    {
+      id: 'team' as ActiveTab,
+      label: 'Equipo & Contexto',
+      icon: Users,
+      badge: '4 integrantes'
     }
   ];
 
@@ -86,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Edit Mode Toggle & Export Button */}
+          {/* Action Buttons: Edit Mode, Publish & Export */}
           <div className="flex items-center space-x-2 sm:space-x-3">
             
             {/* Edit Mode Toggle */}
@@ -103,10 +105,20 @@ export const Header: React.FC<HeaderProps> = ({
               <span>{isEditMode ? 'Modo Edición Activado' : 'Activar Modo Edición'}</span>
             </button>
 
+            {/* Publish to GitHub button (Option 2) */}
+            <button
+              onClick={onOpenPublish}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-extrabold text-white bg-osde-blue hover:bg-osde-dark border border-osde-blue transition-all shadow-sm shadow-osde-blue/20"
+              title="Guardar cambios directamente en GitHub para que se reflejen en Vercel"
+            >
+              <CloudUpload className="w-3.5 h-3.5" />
+              <span>Publicar Cambios</span>
+            </button>
+
             {/* Export Code / Sync */}
             <button
               onClick={onOpenExport}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors"
               title="Exportar código TypeScript o sincronizar archivos"
             >
               <DownloadCloud className="w-3.5 h-3.5 text-osde-blue" />
