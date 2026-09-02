@@ -10,9 +10,8 @@ import { EvidenceModal } from './components/EvidenceModal';
 import { ExportDataModal } from './components/ExportDataModal';
 import { PublishModal } from './components/PublishModal';
 import { TeamFooter } from './components/TeamFooter';
-import { teamData } from './data/teamData';
 import { InterviewModule } from './components/interview/InterviewModule';
-import { Users, GraduationCap, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 const STORAGE_LAWS_KEY = 'osde_ux_laws_v1';
 const STORAGE_HEURISTICS_KEY = 'osde_nielsen_heuristics_v1';
@@ -155,64 +154,6 @@ export const App: React.FC = () => {
             onUpdateHeuristic={handleUpdateHeuristic}
             onOpenEvidence={handleOpenEvidence}
           />
-        )}
-
-        {activeTab === 'team' && (
-          <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
-            {/* Team View Card */}
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-osde-card">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-osde-subtle text-osde-blue flex items-center justify-center">
-                  <Users className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-black text-slate-900">
-                    Ficha Técnica y Equipo de Trabajo
-                  </h2>
-                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-                    {teamData.university} • {teamData.course}
-                  </p>
-                </div>
-              </div>
-
-              {/* Members Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-                {teamData.members.map((name, i) => (
-                  <div
-                    key={i}
-                    className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-osde-blue text-white font-black text-xs flex items-center justify-center shadow-sm">
-                      0{i + 1}
-                    </span>
-                    <div>
-                      <div className="text-sm font-bold text-slate-900">{name}</div>
-                      <div className="text-[11px] text-slate-500 font-medium">Estudiante UX/UI • UdeSA</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Project Guidelines Box */}
-              <div className="mt-8 pt-6 border-t border-slate-100 space-y-4">
-                <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-osde-blue" />
-                  <span>Objetivos Pedagógicos y Metodología</span>
-                </h3>
-                <div className="p-4 rounded-xl bg-osde-subtle/40 border border-osde-border/60 text-xs text-slate-700 space-y-2 leading-relaxed">
-                  <p>
-                    • <strong>Auditoría Heurística de Jakob Nielsen</strong>: Evaluación de las 10 heurísticas en su totalidad con graduación de severidad de 0 a 4 y estimación del impacto en la persona usuaria.
-                  </p>
-                  <p>
-                    • <strong>Checklist de 14 Leyes UX</strong>: Diagnóstico visual y funcional de los flujos principales de la app móvil de OSDE identificando puntos de cumplimiento y quiebre de leyes.
-                  </p>
-                  <p>
-                    • <strong>Despliegue y Accesibilidad</strong>: Artefacto web navegable listo para producción y despliegue continuo en Vercel.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         )}
       </main>
 
