@@ -8,6 +8,7 @@ interface PublishModalProps {
   onClose: () => void;
   laws: UxLawItem[];
   heuristics: NielsenHeuristicItem[];
+  onSuccess?: () => void;
 }
 
 export const PublishModal: React.FC<PublishModalProps> = ({
@@ -15,6 +16,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
   onClose,
   laws,
   heuristics,
+  onSuccess,
 }) => {
   const [token, setToken] = useState<string>(() => localStorage.getItem('osde_github_token') || '');
   const [owner] = useState<string>('FranUdeSA');
@@ -52,6 +54,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
       });
 
       setStatus('success');
+      if (onSuccess) onSuccess();
     } catch (err: any) {
       console.error(err);
       setStatus('error');
