@@ -10,6 +10,7 @@ import { EvidenceModal } from './components/EvidenceModal';
 import { ExportDataModal } from './components/ExportDataModal';
 import { PublishModal } from './components/PublishModal';
 import { TeamFooter } from './components/TeamFooter';
+import { InterviewModule } from './components/interview/InterviewModule';
 import { teamData } from './data/teamData';
 import { Users, GraduationCap, Sparkles, RefreshCw } from 'lucide-react';
 
@@ -171,6 +172,10 @@ export const App: React.FC = () => {
             heuristics={heuristics}
             setActiveTab={setActiveTab}
           />
+        )}
+
+        {activeTab === 'interview' && (
+          <InterviewModule />
         )}
 
         {activeTab === 'laws' && (
