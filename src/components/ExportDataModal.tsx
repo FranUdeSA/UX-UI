@@ -28,11 +28,11 @@ export const ExportDataModal: React.FC<ExportDataModalProps> = ({
     2
   )};\n`;
 
-  const heuristicsCode = `import { NielsenHeuristicItem } from '../types';\n\nexport const nielsenHeuristicsData: NielsenHeuristicItem[] = ${JSON.stringify(
+  const heuristicsCode = `import { NielsenHeuristicItem } from '../types';\nexport { severityLevelsMeta } from './severityMeta';\n\nexport const nielsenHeuristicsData: NielsenHeuristicItem[] = ${JSON.stringify(
     heuristics,
     null,
     2
-  )};\n\nexport { severityLevelsMeta } from './nielsenData';\n`;
+  )};\n`;
 
   const currentCode = activeTab === 'laws' ? lawsCode : heuristicsCode;
   const currentFileName = activeTab === 'laws' ? 'uxLawsData.ts' : 'nielsenData.ts';

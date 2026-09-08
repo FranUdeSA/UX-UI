@@ -112,5 +112,4 @@ export const nielsenHeuristicsData: NielsenHeuristicItem[] = [
     "userImpact": "El usuario accede a información adicional justo cuando la necesita, sin salir del flujo."
   }
 ];
-
-export { severityLevelsMeta } from './nielsenData';
+export { severityLevelsMeta } from './severityMeta';

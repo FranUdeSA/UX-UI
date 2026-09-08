@@ -95,11 +95,11 @@ export async function publishDataToGithub({
     2
   )};\n`;
 
-  const heuristicsCode = `import { NielsenHeuristicItem } from '../types';\n\nexport const nielsenHeuristicsData: NielsenHeuristicItem[] = ${JSON.stringify(
+  const heuristicsCode = `import { NielsenHeuristicItem } from '../types';\nexport { severityLevelsMeta } from './severityMeta';\n\nexport const nielsenHeuristicsData: NielsenHeuristicItem[] = ${JSON.stringify(
     heuristics,
     null,
     2
-  )};\n\nexport { severityLevelsMeta } from './nielsenData';\n`;
+  )};\n`;
 
   const message = commitMessage || `chore: actualización colaborativa de evaluación UX (${new Date().toLocaleString('es-AR')})`;
 
