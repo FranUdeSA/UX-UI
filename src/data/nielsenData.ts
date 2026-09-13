@@ -1,4 +1,5 @@
 import { NielsenHeuristicItem } from '../types';
+export { severityLevelsMeta } from './severityMeta';
 
 export const nielsenHeuristicsData: NielsenHeuristicItem[] = [
   {
@@ -112,4 +113,3 @@ export const nielsenHeuristicsData: NielsenHeuristicItem[] = [
     "userImpact": "El usuario accede a información adicional justo cuando la necesita, sin salir del flujo."
   }
 ];
-export { severityLevelsMeta } from './severityMeta';
