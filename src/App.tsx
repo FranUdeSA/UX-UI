@@ -24,36 +24,21 @@ export const App: React.FC = () => {
   const [isPublishOpen, setIsPublishOpen] = useState<boolean>(false);
   const [modalData, setModalData] = useState<EvidenceModalData | null>(null);
 
-  // Limpiar claves antiguas de localStorage v1 para evitar que bloqueen los datos nuevos
+  // Limpiar cualquier clave antigua o borrador obsoleto de localStorage para que siempre se vea la versión oficial de GitHub
   useEffect(() => {
     try {
       localStorage.removeItem('osde_ux_laws_v1');
       localStorage.removeItem('osde_nielsen_heuristics_v1');
+      localStorage.removeItem('osde_draft_laws_v2');
+      localStorage.removeItem('osde_draft_heuristics_v2');
     } catch {
       // ignore
     }
   }, []);
 
-  // Inicializar directamente con los datos publicados en GitHub/Vercel (fuente de verdad)
-  const [laws, setLaws] = useState<UxLawItem[]>(() => {
-    try {
-      const draft = localStorage.getItem(DRAFT_LAWS_KEY);
-      if (draft) return JSON.parse(draft);
-    } catch {
-      // ignore
-    }
-    return defaultLaws;
-  });
-
-  const [heuristics, setHeuristics] = useState<NielsenHeuristicItem[]>(() => {
-    try {
-      const draft = localStorage.getItem(DRAFT_HEURISTICS_KEY);
-      if (draft) return JSON.parse(draft);
-    } catch {
-      // ignore
-    }
-    return defaultHeuristics;
-  });
+  // Inicializar siempre con los datos oficiales publicados en GitHub/Vercel (fuente de verdad)
+  const [laws, setLaws] = useState<UxLawItem[]>(defaultLaws);
+  const [heuristics, setHeuristics] = useState<NielsenHeuristicItem[]>(defaultHeuristics);
 
   // Guardar en borrador local solo si el usuario está en modo edición
   useEffect(() => {
