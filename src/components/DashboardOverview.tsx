@@ -20,7 +20,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const rompeLaws = laws.filter((l) => l.status === 'rompe');
 
   // Calculations for Nielsen Heuristics
-  const evaluatedHeuristics = heuristics.filter((h) => h.severity !== null);
+  const evaluatedHeuristics = heuristics.filter((h) => h.severity !== null || (h.explanation && h.explanation.trim() !== ''));
   const severityCounts = {
     0: heuristics.filter((h) => h.severity === 0).length,
     1: heuristics.filter((h) => h.severity === 1).length,

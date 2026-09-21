@@ -44,8 +44,8 @@ export const NielsenBoard: React.FC<NielsenBoardProps> = ({
   }, [heuristics, filterSeverity, searchQuery]);
 
   const countAll = heuristics.length;
-  const countEvaluadas = heuristics.filter((h) => h.severity !== null).length;
-  const countPending = heuristics.filter((h) => h.severity === null).length;
+  const countEvaluadas = heuristics.filter((h) => h.severity !== null || (h.explanation && h.explanation.trim() !== '')).length;
+  const countPending = heuristics.filter((h) => h.severity === null && (!h.explanation || h.explanation.trim() === '')).length;
 
   return (
     <div className="space-y-6 animate-fadeIn">
